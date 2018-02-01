@@ -1,9 +1,33 @@
 <html>
 
 	<body>
-		
+
 		<script>
-		
+
+		  // opens the google pop up
+			let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+
+      // options that will be in the query string
+			let options = [
+				{ client_id:'826098883693-lp1uabsen93k15i7b6hjk28c3hugssrt.apps.googleusercontent.com'},
+				{ redirect_uri: 'https://cf-401n4-johncokos.c9users.io:8082/oauth/google/code'},
+				{ scope: 'email openid profile'},
+				{ prompt: 'consent'},
+				{ response_type: 'code'}
+			]
+
+			let QueryString = (options).map( (option) => {
+				return `${option.key}=` + encodeURIComponent(option[key]);
+			}).join("&");
+
+			let authURL = `${googleURL}?${QueryString}`;
+
+			let a = document.createElement('a');
+			a.setAttribute('href', authURL);
+			a.textContent = "Login With Google";
+
+			document.body.appendChild(a);
+
 		</script>
 
 	</body>
